@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Karthika N R | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------- GLOBAL STYLES ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #4C6FFF;
+            --primary-dark: #3147b8;
+            --bg: #0f172a;
+            --bg-light: #111827;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --card-bg: #111827;
+            --border: #1f2937;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at top, #1f2933 0, #020617 50%, #000 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ---------- HERO / HOME ---------- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 2fr 1.3fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-role {
+            color: var(--muted);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .hero-text p {
+            margin-bottom: 25px;
+            color: #d1d5db;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 999px;
+            border: 1px solid var(--primary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(76, 111, 255, 0.1);
+        }
+
+        .hero-right {
+            justify-self: center;
+        }
+
+        .hero-card {
+            background: linear-gradient(145deg, #111827, #020617);
+            border-radius: 20px;
+            padding: 25px 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+            max-width: 320px;
+        }
+
+        .profile-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(76, 111, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            font-weight: 600;
+            background: radial-gradient(circle at 30% 30%, #4c6fff 0, #020617 55%);
+        }
+
+        .hero-card h3 {
+            margin-bottom: 5px;
+        }
+
+        .hero-card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        /* ---------- ABOUT ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1.2fr;
+            gap: 40px;
+        }
+
+        .about-grid p {
+            color: #d1d5db;
+            font-size: 0.95rem;
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .info-item span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        .pill {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.15);
+            color: #e5e7eb;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        /* ---------- SKILLS ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 18px 16px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.15);
+            color: #e5e7eb;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        /* ---------- EXPERIENCE ---------- */
+        .timeline {
+            border-left: 2px solid var(--border);
+            margin-left: 10px;
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -21px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .timeline-title {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .timeline-item p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        /* ---------- PROJECTS ---------- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 18px 16px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .project-card h3 {
+            font-size: 1rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .project-meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .project-links {
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .project-links a {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* ---------- EDUCATION ---------- */
+        .edu-grid, .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .edu-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 18px 16px;
+            border: 1px solid var(--border);
+        }
+
+        .edu-degree {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .edu-inst {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .edu-year {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .edu-card p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--muted);
+            background: #020617;
+        }
+        /* Hover effect for cards */
+.skill-card, .project-card, .edu-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+}
+
+.skill-card:hover, .project-card:hover, .edu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 18px rgba(76, 111, 255, 0.3);
+    border: 1px solid var(--primary);
+}
+.skill-card:hover, .project-card:hover, .edu-card:hover {
+    transform: translateY(-8px);
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 18px rgba(76, 111, 255, 0.6);
+}
+.skill-card:hover, .project-card:hover, .edu-card:hover {
+    transform: scale(1.05);
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 25px rgba(76, 111, 255, 0.7);
+}
+
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+
+            .hero-right {
+                order: -1;
+                justify-self: flex-start;
+            }
+
+            .hero-card {
+                margin-bottom: 20px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none; /* simple: hide menu on very small screens */
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+        .profile-circle img.profile-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;   /* makes sure the image fills the circle nicely */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container nav">
+            <div class="logo">Karthika<span> N R</span></div>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skill</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Educational Qualification</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HOME / HERO -->
+    <section id="home">
+        <div class="container hero">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Karthika N R</span></h1>
+                <div class="hero-role">Computer Faculty | Python & Django Developer</div>
+                <p>
+                    I am a dedicated Computer Faculty with several years of experience in teaching
+                    computer fundamentals, programming, hardware, and software tools. I enjoy guiding
+                    students, creating mini projects, and continuously learning new technologies like
+                    Python, Django, and full stack development.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Projects</a>
+                    <a href="#about" class="btn btn-outline">Know More About Me</a>
+                    <a href="KARTHIKA N R-Resume.pdf" download class="btn btn-outline">Download Resume</a>
+
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-card">
+                    <div class="profile-circle">
+                        <img src="Karthika.jpeg" alt="Karthika N R" class="profile-img">
+                    </div>
+                    <h3>Karthika N R</h3>
+                    <p>
+                        Computer Faculty & Tech Enthusiast<br>
+                        Perumbavoor, Ernakulam, Kerala, India<br><br>
+                        <strong>Phone:</strong> 9746476335<br>
+                        <strong>Email:</strong> karthikanr121@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <div class="section-subtitle">About</div>
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-grid">
+                <div>
+                    <p>
+                        I am <strong>Karthika N R</strong>, an experienced <strong>Computer Faculty</strong> with a strong
+                        background in teaching computer fundamentals, operating systems, hardware, programming
+                        languages, and office tools. I have worked as a faculty at Infocom Computer Academy,
+                        Perumbavoor from <strong>May 2017 to May 2023</strong>.
+                    </p>
+                    <br>
+                    <p>
+                        I enjoy both software and hardware sides of computers – from assembling systems and
+                        installing operating systems to building web applications using <strong>Python (Django)</strong>.
+                        I am hardworking, honest, responsive, and punctual, and I love helping students gain
+                        confidence in technology.
+                    </p>
+                    <br>
+                    <p>
+                        I am currently looking for opportunities where I can contribute my teaching skills,
+                        technical knowledge, and passion for learning in the field of IT training, software
+                        development, or related roles.
+                    </p>
+                </div>
+                <div>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span>Name</span>
+                            Karthika N R
+                        </div>
+                        <div class="info-item">
+                            <span>Current Role</span>
+                            Computer Faculty / Trainer
+                        </div>
+                        <div class="info-item">
+                            <span>Date of Birth</span>
+                            30-04-1990
+                        </div>
+                        <div class="info-item">
+                            <span>Marital Status</span>
+                            Married
+                        </div>
+                        <div class="info-item">
+                            <span>Nationality</span>
+                            Indian
+                        </div>
+                        <div class="info-item">
+                            <span>Location</span>
+                            Kavumparambil (H), Mudickal P O,<br>
+                            Palakkattuthazham, Perumbavoor – 683542
+                        </div>
+                        <div class="info-item">
+                            <span>Email</span>
+                            karthikanr121@gmail.com
+                        </div>
+                        <div class="info-item">
+                            <span>Phone</span>
+                            9746476335
+                        </div>
+                        <div class="info-item">
+                            <span>Languages Known</span>
+                            Malayalam, English, Hindi
+                        </div>
+                        <div class="info-item">
+                            <span>Abilities</span>
+                            Hardworking, Honest, Responsive, Punctual
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-subtitle">Skill</div>
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming & Web</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python (Django)</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">JAVA</span>
+                        <span class="tag">C</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">VB & VB.NET</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Databases & Software</h3>
+                    <div class="skill-tags">
+                        <span class="tag">MySQL</span>
+                        <span class="tag">MS Office 2013</span>
+                        <span class="tag">MS Office 2019</span>
+                        <span class="tag">Windows 7</span>
+                        <span class="tag">Windows 10</span>
+                        <span class="tag">Windows 11</span>
+                        <span class="tag">Internet & Email</span>
+                        <span class="tag">Printing & Scanning</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>DTP & Design</h3>
+                    <div class="skill-tags">
+                        <span class="tag">PageMaker</span>
+                        <span class="tag">CorelDraw</span>
+                        <span class="tag">Photoshop</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Hardware & System</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Computer Assembling</span>
+                        <span class="tag">Formatting</span>
+                        <span class="tag">OS Installation (Windows, Linux)</span>
+                        <span class="tag">Software Installation</span>
+                        <span class="tag">Computer Hardware & Networking</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Teaching & Training</span>
+                        <span class="tag">Student Guidance</span>
+                        <span class="tag">Communication</span>
+                        <span class="tag">Responsibility</span>
+                        <span class="tag">Punctuality</span>
+                        <span class="tag">Teamwork</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-subtitle">Experience</div>
+            <h2 class="section-title">Work Experience</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Computer Faculty</div>
+                    <div class="timeline-company">Infocom Computer Academy, Perumbavoor</div>
+                    <div class="timeline-date">May 2017 – May 2023</div>
+                    <p>
+                        • Conducted theory and practical classes in Computer Fundamentals and Operating Systems,
+                        Computer Hardware, Programming Languages, MS Office, and DTP.<br>
+                        • Guided students in creating mini software projects and practical assignments.<br>
+                        • Prepared notes, study materials, and conducted exams and evaluations.<br>
+                        • Helped students build confidence in using computers for real-life tasks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-subtitle">Projects</div>
+            <h2 class="section-title">Software Projects</h2>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Movie Posting Website</h3>
+                    <p>
+                        A web application built using Python Django to post and manage movie details.
+                        It allows adding, viewing, and organizing movies with relevant information.
+                    </p>
+                    <div class="project-meta">
+                        Python · Django
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Karthikanr121/movieposting" target="_blank">GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Ecommerce Project</h3>
+                    <p>
+                        An ecommerce web application created using Python Django that demonstrates product
+                        listing and basic ecommerce structure suitable for learning and demonstration.
+                    </p>
+                    <div class="project-meta">
+                        Python · Django
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Karthikanr121/eco" target="_blank">GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Todo Project</h3>
+                    <p>
+                        A simple todo management application developed with Python Django to add, update,
+                        and delete tasks, useful for understanding CRUD operations in Django.
+                    </p>
+                    <div class="project-meta">
+                        Python · Django
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Karthikanr121/td" target="_blank">GitHub Repository</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <div class="container">
+            <div class="section-subtitle">Educational Qualification</div>
+            <h2 class="section-title">Education</h2>
+
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">Diploma in Computer Engineering</div>
+                    <div class="edu-inst">Govt. Polytechnic College, Kothamangalam</div>
+                    <div class="edu-year">2007 – 2010</div>
+                    <p>
+                        Completed Diploma in Computer Engineering with core subjects in programming,
+                        computer systems, and related technologies.
+                    </p>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">Plus Two Commerce</div>
+                    <div class="edu-inst">Mar Elias H S S, Kottappady</div>
+                    <div class="edu-year">2005 – 2007</div>
+                    <p>
+                        Higher Secondary education in Commerce stream.
+                    </p>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">SSLC</div>
+                    <div class="edu-inst">Mar Elias H S S, Kottappady</div>
+                    <div class="edu-year">2004 – 2005</div>
+                    <p>
+                        Secondary School Leaving Certificate.
+                    </p>
+                </div>
+            </div>
+
+            <br><br>
+            <div class="section-subtitle" style="margin-bottom:10px;">Technical Education</div>
+
+            <div class="tech-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">Python Full Stack Internship</div>
+                    <div class="edu-inst">Inmakes Infotech Pvt. Ltd</div>
+                    <p>
+                        Completed internship in Python Full Stack development, working with Python
+                        and web technologies to build practical applications.
+                    </p>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">Diploma & Certificate Courses</div>
+                    <div class="edu-inst">Kerala State Rutronix</div>
+                    <p>
+                        • Diploma in Desktop Publishing (DTP)<br>
+                        • Diploma in Computer Application (DCA)<br>
+                        • Computerised Word Processing and Data Entry
+                    </p>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-degree">Computer Hardware & Networking</div>
+                    <div class="edu-inst">Zion Computer Hardware and Networking Institute, Ernakulam</div>
+                    <p>
+                        Training in computer hardware, assembling, and networking basics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            © <span id="year"></span> Karthika N R. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Set current year automatically
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
